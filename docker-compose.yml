@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  backend:
+    image: 172.16.0.75/harbordocker/backend:v1
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+
+  frontend:
+    image: 172.16.0.75/harbordocker/frontend:v1
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+

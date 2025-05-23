@@ -1,0 +1,14 @@
+# Step 1: Build the React app
+FROM node:latest as react-builder
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+COPY . ./
+RUN npm run build
+
+# Step 2: Serve the React app using nginx
+FROM nginx:alpine
+COPY --from=react-builder /app/build /usr/share/nginx/html
+EXPOSE 8081
+CMD ["nginx", "-g", "daemon off;"]
