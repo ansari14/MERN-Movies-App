@@ -35,34 +35,34 @@ const Navigation = () => {
   };
 
   return (
-    <div className="fixed bottom-10 left-[30rem] transform translate-x-1/2 translate-y-1/2 z-50 bg-[#0f0f0f] border w-[30%] px-[4rem] mb-[2rem] rounded">
+    <div className="fixed bottom-10 left-[30rem] transform translate-x-1/2 translate-y-1/2 z-50 bg-[#0f0f0f] border border-gray-700 w-[30%] px-[4rem] mb-[2rem] rounded-lg shadow-xl backdrop-blur-sm">
       <section className="flex justify-between items-center">
         {/* Section 1 */}
         <div className="flex justify-center items-center mb-[2rem]">
           <Link
             to="/"
-            className="flex items-center transition-transform transform hover:translate-x-2"
+            className="flex items-center transition-all duration-300 hover:translate-x-2 hover:text-blue-400 text-gray-300"
           >
-            <AiOutlineHome className="mr-2 mt-[3rem]" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">Home</span>
+            <AiOutlineHome className="mr-2 mt-[3rem]" size={28} />
+            <span className="hidden nav-item-name mt-[3rem] font-medium">Home</span>
           </Link>
 
           <Link
             to="/movies"
-            className="flex items-center transition-transform transform hover:translate-x-2 ml-[1rem]"
+            className="flex items-center transition-all duration-300 hover:translate-x-2 hover:text-blue-400 text-gray-300 ml-[1.5rem]"
           >
-            <MdOutlineLocalMovies className="mr-2 mt-[3rem]" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">SHOP</span>
+            <MdOutlineLocalMovies className="mr-2 mt-[3rem]" size={28} />
+            <span className="hidden nav-item-name mt-[3rem] font-medium">MOVIES</span>
           </Link>
         </div>
         {/* Section 2 */}
         <div className="relative">
           <button
             onClick={toggleDropdown}
-            className="text-gray-800 focus:outline-none"
+            className="text-gray-300 hover:text-blue-400 transition-colors duration-300 focus:outline-none flex items-center"
           >
             {userInfo ? (
-              <span className="text-white">{userInfo.username}</span>
+              <span className="font-medium">{userInfo.username}</span>
             ) : (
               <></>
             )}
@@ -70,12 +70,12 @@ const Navigation = () => {
             {userInfo && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className={`h-4 w-4 ml-1 ${
+                className={`h-4 w-4 ml-1 transition-transform duration-300 ${
                   dropdownOpen ? "transform rotate-180" : ""
                 }`}
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="white"
+                stroke="currentColor"
               >
                 <path
                   strokeLinecap="round"
@@ -89,7 +89,7 @@ const Navigation = () => {
 
           {dropdownOpen && userInfo && (
             <ul
-              className={`absolute right-0 mt-2 mr-14 w-[10rem] space-y-2 bg-white text-gray-600 ${
+              className={`absolute right-0 mt-2 mr-14 w-[10rem] space-y-1 bg-[#1a1a1a] text-gray-300 rounded-lg shadow-xl border border-gray-700 ${
                 !userInfo.isAdmin ? "-top-20" : "-top-24"
               }`}
             >
@@ -98,7 +98,7 @@ const Navigation = () => {
                   <li>
                     <Link
                       to="/admin/movies/dashboard"
-                      className="block px-4 py-2 hover:bg-gray-100"
+                      className="block px-4 py-2 hover:bg-gray-800 hover:text-blue-400 rounded-t-lg transition-colors duration-300"
                     >
                       Dashboard
                     </Link>
@@ -109,7 +109,7 @@ const Navigation = () => {
               <li>
                 <Link
                   to="/profile"
-                  className="block px-4 py-2 hover:bg-gray-100"
+                  className="block px-4 py-2 hover:bg-gray-800 hover:text-blue-400 transition-colors duration-300"
                 >
                   Profile
                 </Link>
@@ -118,7 +118,7 @@ const Navigation = () => {
               <li>
                 <button
                   onClick={logoutHandler}
-                  className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+                  className="block w-full px-4 py-2 text-left hover:bg-gray-800 hover:text-blue-400 rounded-b-lg transition-colors duration-300"
                 >
                   Logout
                 </button>
@@ -131,20 +131,20 @@ const Navigation = () => {
               <li>
                 <Link
                   to="/login"
-                  className="flex items-center mt-5 transition-transform transform hover:translate-x-2 mb-[2rem]"
+                  className="flex items-center mt-5 transition-all duration-300 hover:translate-x-2 hover:text-blue-400 text-gray-300 mb-[2rem]"
                 >
-                  <AiOutlineLogin className="mr-2 mt-[4px]" size={26} />
-                  <span className="hidden nav-item-name">LOGIN</span>
+                  <AiOutlineLogin className="mr-2 mt-[4px]" size={28} />
+                  <span className="hidden nav-item-name font-medium">LOGIN</span>
                 </Link>
               </li>
 
               <li>
                 <Link
                   to="/register"
-                  className="flex items-center mt-5 transition-transform transform hover:translate-x-2 ml-[1rem]"
+                  className="flex items-center mt-5 transition-all duration-300 hover:translate-x-2 hover:text-blue-400 text-gray-300 ml-[1.5rem]"
                 >
-                  <AiOutlineUserAdd size={26} />
-                  <span className="hidden nav-item-name">REGISTER</span>
+                  <AiOutlineUserAdd size={28} />
+                  <span className="hidden nav-item-name font-medium">REGISTER</span>
                 </Link>
               </li>
             </ul>
